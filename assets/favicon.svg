@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Destapación Express Capital">
+  <rect width="64" height="64" rx="14" fill="#0F6E7A"/>
+  <path d="M22 26 q10 12 20 0 q-2 12 -10 12 q-8 0 -10 -12 Z" fill="#fff"/>
+  <ellipse cx="32" cy="26" rx="11" ry="4" fill="#27A6B4"/>
+  <circle cx="32" cy="26" r="2.6" fill="#FF7A2F"/>
+  <rect x="28.5" y="38" width="7" height="14" rx="3" fill="#FF7A2F"/>
+</svg>

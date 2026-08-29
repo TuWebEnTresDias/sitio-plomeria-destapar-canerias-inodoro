@@ -1,0 +1,7 @@
+# Destapación Express Capital
+Micro-sitio de servicio de plomería en Capital Federal, Argentina.
+- Servicio: destape de cañerías tapadas de inodoros, sin obra sucia, con diagnóstico previo y garantía.
+- Zona: Capital Federal (CABA).
+- Horario: 9 a 18 hs.
+- Contacto: WhatsApp.
+- Páginas: inicio con hero, servicio, cobertura, testimonios, FAQ y formulario de contacto.
