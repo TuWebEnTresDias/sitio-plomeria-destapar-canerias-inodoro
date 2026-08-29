@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: GPTBot
 Allow: /
+
+Sitemap: https://tuwebentresdias.github.io/sitio-plomeria-destapar-canerias-inodoro/sitemap.xml
