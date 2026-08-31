@@ -1,5 +1,5 @@
 /* ===========================================================
-   Destapación Express Capital — micro-sitio #1 (plomería)
+   Destapación Express Capital — plomería
    Identidad: agua teal + acento naranja cálido
    Mobile-first
    =========================================================== */
@@ -110,9 +110,11 @@ a { color: var(--brand); }
 }
 .brand-mark { border-radius: 8px; }
 .nav {
-  display: none;
+  display: flex;
   margin-left: auto;
   gap: 18px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 .nav a {
   color: var(--ink);
@@ -121,6 +123,7 @@ a { color: var(--brand); }
   font-size: .95rem;
 }
 .nav a:hover { color: var(--brand); }
+.nav a:focus-visible,.btn:focus-visible,.wa-float:focus-visible,summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 .header-cta { margin-left: 12px; padding: 9px 16px; }
 
 /* ---------- Hero ---------- */
@@ -173,6 +176,13 @@ a { color: var(--brand); }
 .section-alt { background: var(--surface); }
 .section-title { font-size: clamp(1.4rem, 4.5vw, 2.1rem); }
 .section-lead { color: var(--muted); max-width: 60ch; margin-top: 0; }
+
+.proceso-destape { background: #EAF4F5; }
+.proceso-grid { display: grid; gap: 24px; }
+.proceso-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.proceso-list li { background: var(--surface); border-left: 4px solid var(--accent); border-radius: 10px; padding: 16px 18px; display: grid; gap: 3px; box-shadow: var(--shadow); }
+.proceso-list strong { color: var(--brand-dark); font-family: var(--font-head); }
+.proceso-list span { color: var(--muted); }
 
 .cards {
   display: grid;
@@ -320,6 +330,18 @@ a { color: var(--brand); }
   .testimonios { grid-template-columns: repeat(3, 1fr); }
   .contacto-grid { grid-template-columns: 1fr 1fr; align-items: start; }
   .footer-grid { grid-template-columns: 1.4fr 1fr 1.2fr; align-items: start; }
+}
+
+@media (max-width: 759px) {
+  .header-inner { flex-wrap: wrap; }
+  .nav { order: 3; width: 100%; margin-left: 0; justify-content: flex-start; gap: 10px 16px; overflow-x: auto; padding-bottom: 2px; }
+  .nav a { white-space: nowrap; font-size: .86rem; }
+  .header-cta { margin-left: auto; }
+  .section[id] { scroll-margin-top: 112px; }
+}
+
+@media (min-width: 760px) {
+  .proceso-grid { grid-template-columns: 1fr 1fr; align-items: center; }
 }
 
 @media (min-width: 1024px) {

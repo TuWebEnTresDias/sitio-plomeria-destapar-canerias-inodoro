@@ -1,5 +1,5 @@
 /* ===========================================================
-   Destapación Express Capital — micro-sitio #1
+   Destapación Express Capital — atención de plomería
    Lógica mínima: formulario -> chat de WhatsApp (wa.me)
    El número es un placeholder [WHATSAPP] hasta que se provea.
    =========================================================== */
