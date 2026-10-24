@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="es_AR">
 <head>
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="base-uri 'self'; object-src 'none'; form-action 'none'">
+<script src="site-security.js"></script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Destapamos cañerías tapadas de un inodoro en Capital Federal | Destapación Express Capital</title>
@@ -128,6 +132,22 @@
   <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}p||((p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",p.onerror=function(){p=null},(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r));var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="al ol ll init Il Rl Tl Ml Ol za El Dl Sl capture getExtension Pl nl Hl calculateEventProperties Bl register register_once register_for_session unregister unregister_for_session Vl Cl zl getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync Gl identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset Zl shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty Ul ql createPersonProfile setInternalOrTestUser Wl ul hl opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing $l debug Ua Jn getPageViewId captureTraceFeedback captureTraceMetric bl".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
     posthog.init('phc_zRJZ5SvArTjrYcxxgLg35xTBeTofkA6DnmJoE6SXfPQV', {
+        before_send: (event) => {
+  if (!event || !event.properties) return event;
+  const privateKeys = /^(n|t|e|name|nombre|phone|telefono|tel|email|message|mensaje)$/i;
+  for (const key of ['$current_url', '$initial_current_url', '$referrer', '$initial_referrer']) {
+    const value = event.properties[key];
+    if (typeof value !== 'string') continue;
+    try {
+      const url = new URL(value);
+      for (const name of [...url.searchParams.keys()]) if (privateKeys.test(name)) url.searchParams.delete(name);
+      event.properties[key] = url.href;
+    } catch { /* Non-URL values such as $direct are preserved. */ }
+  }
+  for (const key of Object.keys(event.properties)) if (privateKeys.test(key)) delete event.properties[key];
+  return event;
+},
+        session_recording: { maskAllInputs: true },
         api_host: 'https://us.i.posthog.com',
         defaults: '2026-05-30',
         person_profiles: 'identified_only',
@@ -351,7 +371,7 @@
             <label for="mensaje">¿Qué le pasa a tu inodoro?</label>
             <textarea id="mensaje" name="mensaje" rows="4" placeholder="Contanos qué observás: baja lento, hace ruido, etc." required></textarea>
           </div>
-          <button type="submit" class="btn btn-cta btn-lg">Enviar por WhatsApp</button>
+          <button type="submit" class="btn btn-cta btn-lg" disabled data-security-submit>Enviar por WhatsApp</button>
           <p class="form-note" id="form-note" hidden>Completá nombre, barrio y mensaje para continuar.</p>
         </form>
       </div>
@@ -374,13 +394,13 @@
     </div>
   </footer>
 
-  <a class="wa-float" href="https://wa.me/[WHATSAPP]?text=Hola%2C%20necesito%20destapar%20el%20inodoro%20en%20Capital." target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+  <a class="wa-float" href="https://wa.me/[WHATSAPP]?text=Hola%2C%20necesito%20destapar%20el%20inodoro%20en%20Capital." target="_blank" rel="noopener noreferrer" aria-label="Escribinos por WhatsApp">
     <svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true">
       <path fill="currentColor" d="M16 .4C7.5.4.6 7.3.6 15.8c0 2.8.8 5.5 2.1 7.8L.4 31.6l8.2-2.1c2.3 1.3 4.9 2 7.4 2 8.5 0 15.4-6.9 15.4-15.4S24.5.4 16 .4zm0 28c-2.3 0-4.5-.6-6.5-1.8l-.5-.3-5.2 1.4 1.4-5.1-.3-.5A12.7 12.7 0 0 1 3.3 15.8C3.3 8.9 8.9 3.3 16 3.3S28.7 8.9 28.7 16 23.1 28.4 16 28.4zm7-9.5c-.4-.2-2.3-1.1-2.6-1.3-.3-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.2-.4.3-.8.1-2.3-1.1-3.8-2-5-4.7-.4-.7.4-.7.9-1.8.3-.6 0-1.1 0-1.3 0-.2-.9-2.2-1.2-3-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.5 1.5-1.5 3.6 0 2.1 1.5 4.1 1.8 4.4.2.3 3 4.6 7.3 6.4 1 .4 1.8.7 2.4.9.8.3 1.5.3 2.1.2.6-.1 2.3-.9 2.6-1.8.3-.9.3-1.7.2-1.8-.1-.2-.3-.3-.7-.5z"/>
     </svg>
     <span>WhatsApp</span>
   </a>
 
-  <script src="script.js" defer></script>
+  <script data-site-script src="script.js" defer></script>
 </body>
 </html>
